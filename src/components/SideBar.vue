@@ -10,8 +10,26 @@
 
     <VDivider></VDivider>
     <VList density="compact" nav>
-      <VListItem prepend-icon="mdi-image" title="Color Gallery" value="Color" />
-      <VListItem prepend-icon="mdi-dialpad" title="GraySpace *" value="Color" />
+      <VListItem
+        prepend-icon="mdi-image"
+        title="Color Gallery"
+        value="Color"
+        @click="selectOption(true)"
+      />
+      <VListItem
+        prepend-icon="mdi-dialpad"
+        title="GraySpace *"
+        value="Color"
+        @click="selectOption(false)"
+      />
     </VList>
   </VNavigationDrawer>
 </template>
+
+<script setup>
+const emits = defineEmits(["selectOption"]);
+
+const selectOption = (isColor) => {
+  emits("selectOption", isColor);
+};
+</script>
